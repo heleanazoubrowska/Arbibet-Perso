@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E78022AB-9810-4EFE-8E6B-CE36E016EA6E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ArbibetProgram</RootNamespace>
+    <AssemblyName>ArbibetProgram</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|anycpu' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.1.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Diagnostics, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Diagnostics.4.1.1\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.1.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.4.1.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.30\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Telegram.Bot, Version=15.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telegram.Bot.15.7.1\lib\net45\Telegram.Bot.dll</HintPath>
+    </Reference>
+    <Reference Include="Tesseract, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Tesseract.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.Compression.Base">
+      <HintPath>..\packages\Syncfusion.Pdf.OCR.WinForms.18.4.0.30\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OCRProcessor.Base">
+      <HintPath>..\packages\Syncfusion.Pdf.OCR.WinForms.18.4.0.30\lib\net46\Syncfusion.OCRProcessor.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base">
+      <HintPath>..\packages\Syncfusion.Pdf.OCR.WinForms.18.4.0.30\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.AccessControl">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountMethods\SetupAccounts.cs" />
+    <Compile Include="AccountMethods\CheckAccount.cs" />
+    <Compile Include="Crawling\Aa2888\Base.cs" />
+    <Compile Include="Crawling\Aa2888\Login.cs" />
+    <Compile Include="Crawling\B855bet\CheckBet.cs" />
+    <Compile Include="Crawling\B855bet\Login.cs" />
+    <Compile Include="Crawling\Cambo88BTI\Login.cs" />
+    <Compile Include="Crawling\Cambo88SBO\Login.cs" />
+    <Compile Include="Crawling\Cambo88UG\GetBetStatus.cs" />
+    <Compile Include="Crawling\Cambo88UG\Login.cs" />
+    <Compile Include="Crawling\Ibc05\Login.cs" />
+    <Compile Include="Crawling\Ibet789\Login.cs" />
+    <Compile Include="Crawling\Nba369\Login.cs" />
+    <Compile Include="Crawling\Ph2888\Base.cs" />
+    <Compile Include="Crawling\Ph2888\CheckBet.cs" />
+    <Compile Include="Crawling\Ph2888\ConfirmBet.cs" />
+    <Compile Include="Crawling\Ph2888\Connect.cs" />
+    <Compile Include="Crawling\Ph2888\FindBet.cs" />
+    <Compile Include="Crawling\Ph2888\GetBetStatus.cs" />
+    <Compile Include="Crawling\Ph2888\GetOdd.cs" />
+    <Compile Include="Crawling\Ph2888\Login.cs" />
+    <Compile Include="Crawling\Ph2888\PlaceBet.cs" />
+    <Compile Include="Crawling\Ph2888\Report.cs" />
+    <Compile Include="Crawling\Va2888AFB\Login.cs" />
+    <Compile Include="Crawling\Va2888\Base.cs" />
+    <Compile Include="Crawling\Va2888\CheckBet.cs" />
+    <Compile Include="Crawling\Va2888\ConfirmBet.cs" />
+    <Compile Include="Crawling\Va2888\Connect.cs" />
+    <Compile Include="Crawling\Va2888\FindBet.cs" />
+    <Compile Include="Crawling\Va2888\GetBetStatus.cs" />
+    <Compile Include="Crawling\Va2888\GetOdd.cs" />
+    <Compile Include="Crawling\Va2888\Login.cs" />
+    <Compile Include="Crawling\Va2888\PlaceBet.cs" />
+    <Compile Include="Crawling\Va2888\Report.cs" />
+    <Compile Include="Crawling\Va2888AFB\Base.cs" />
+    <Compile Include="Crawling\Va2888AFB\CheckBet.cs" />
+    <Compile Include="Crawling\Va2888AFB\ConfirmBet.cs" />
+    <Compile Include="Crawling\Va2888AFB\Connect.cs" />
+    <Compile Include="Crawling\Va2888AFB\FindBet.cs" />
+    <Compile Include="Crawling\Va2888AFB\GetBetStatus.cs" />
+    <Compile Include="Crawling\Va2888AFB\GetOdd.cs" />
+    <Compile Include="Crawling\Va2888AFB\PlaceBet.cs" />
+    <Compile Include="Crawling\Va2888AFB\Report.cs" />
+    <Compile Include="Crawling\_Template\Login.cs" />
+    <Compile Include="Crawling\_Template\Base.cs" />
+    <Compile Include="Crawling\_Template\GetBetStatus.cs" />
+    <Compile Include="Crawling\_Template\CheckBet.cs" />
+    <Compile Include="Crawling\_Template\ConfirmBet.cs" />
+    <Compile Include="Crawling\_Template\Connect.cs" />
+    <Compile Include="Crawling\_Template\FindBet.cs" />
+    <Compile Include="Crawling\_Template\GetOdd.cs" />
+    <Compile Include="Crawling\_Template\PlaceBet.cs" />
+    <Compile Include="Crawling\_Template\Report.cs" />
+    <Compile Include="Crawling\Cambo88UG\CheckBet.cs" />
+    <Compile Include="Crawling\Cambo88UG\ConfirmBet.cs" />
+    <Compile Include="Crawling\Cambo88UG\Connect.cs" />
+    <Compile Include="Crawling\Cambo88UG\FindBet.cs" />
+    <Compile Include="Crawling\Cambo88UG\GetOdd.cs" />
+    <Compile Include="Crawling\Cambo88UG\PlaceBet.cs" />
+    <Compile Include="Crawling\Cambo88UG\Report.cs" />
+    <Compile Include="Models\BetPlaced.cs" />
+    <Compile Include="Models\Bookmaker.cs" />
+    <Compile Include="Models\Casino.cs" />
+    <Compile Include="Models\CasinoAPI.cs" />
+    <Compile Include="Functions\NLogger.cs" />
+    <Compile Include="Models\CheckBet_ExtraParams.cs" />
+    <Compile Include="Models\FindGame_Result.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Opportunity.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="CrawlingSingleLine\Cambo88UG.cs" />
+    <Compile Include="CrawlingSingleLine\Aa2888.cs" />
+    <Compile Include="CrawlingSingleLine\855bet.cs" />
+    <Compile Include="CrawlingSingleLine\Va2888.cs" />
+    <Compile Include="Functions\Common.cs" />
+    <Compile Include="SignalR\SignalR_Client.cs" />
+    <Compile Include="SignalR\SignalR_Hub.cs" />
+    <Compile Include="SignalR\Startup.cs" />
+    <Compile Include="Strategy\Football\CheckForArbitrage.cs" />
+    <Compile Include="Strategy\Football\FootballHandicap.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="CrawlingSingleLine\Nba369.cs" />
+    <Compile Include="CrawlingSingleLine\Ibc05.cs" />
+    <Compile Include="CrawlingSingleLine\Cambo88BTI.cs" />
+    <Compile Include="ApiRest\BackendArbApi.cs" />
+    <Compile Include="Crawling\Cambo88UG\Base.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\CasinosStatus.cs" />
+    <Compile Include="AccountMethods\RemoveAccount.cs" />
+    <Compile Include="AccountMethods\TurnOnAccount.cs" />
+    <Compile Include="Strategy\Football\PlaceBet.cs" />
+    <Compile Include="Models\DataApi.cs" />
+    <Compile Include="Models\BetResult.cs" />
+    <Compile Include="Strategy\Football\GetBetStatus.cs" />
+    <Compile Include="Telegram\TelegramBot.cs" />
+    <Compile Include="Crawling\B855bet\Base.cs" />
+    <Compile Include="Crawling\B855bet\Connect.cs" />
+    <Compile Include="Crawling\B855bet\GetOdd.cs" />
+    <Compile Include="Crawling\B855bet\FindBet.cs" />
+    <Compile Include="Crawling\B855bet\PlaceBet.cs" />
+    <Compile Include="Crawling\B855bet\ConfirmBet.cs" />
+    <Compile Include="Crawling\B855bet\GetBetStatus.cs" />
+    <Compile Include="Crawling\B855bet\Report.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Crawling\Aa2888\GetBetStatus.cs" />
+    <Compile Include="Crawling\Aa2888\ConfirmBet.cs" />
+    <Compile Include="Crawling\Aa2888\Connect.cs" />
+    <Compile Include="Crawling\Aa2888\FindBet.cs" />
+    <Compile Include="Crawling\Aa2888\GetOdd.cs" />
+    <Compile Include="Crawling\Aa2888\PlaceBet.cs" />
+    <Compile Include="Crawling\Aa2888\Report.cs" />
+    <Compile Include="Crawling\Cambo88BTI\Base.cs" />
+    <Compile Include="Crawling\Cambo88BTI\GetBetStatus.cs" />
+    <Compile Include="Crawling\Cambo88BTI\ConfirmBet.cs" />
+    <Compile Include="Crawling\Cambo88BTI\Connect.cs" />
+    <Compile Include="Crawling\Cambo88BTI\FindBet.cs" />
+    <Compile Include="Crawling\Cambo88BTI\GetOdd.cs" />
+    <Compile Include="Crawling\Cambo88BTI\PlaceBet.cs" />
+    <Compile Include="Crawling\Cambo88BTI\Report.cs" />
+    <Compile Include="Crawling\Cambo88SBO\Base.cs" />
+    <Compile Include="Crawling\Cambo88SBO\GetBetStatus.cs" />
+    <Compile Include="Crawling\Cambo88SBO\ConfirmBet.cs" />
+    <Compile Include="Crawling\Cambo88SBO\Connect.cs" />
+    <Compile Include="Crawling\Cambo88SBO\FindBet.cs" />
+    <Compile Include="Crawling\Cambo88SBO\GetOdd.cs" />
+    <Compile Include="Crawling\Cambo88SBO\PlaceBet.cs" />
+    <Compile Include="Crawling\Cambo88SBO\Report.cs" />
+    <Compile Include="Crawling\Ibc05\Base.cs" />
+    <Compile Include="Crawling\Ibc05\GetBetStatus.cs" />
+    <Compile Include="Crawling\Ibc05\ConfirmBet.cs" />
+    <Compile Include="Crawling\Ibc05\Connect.cs" />
+    <Compile Include="Crawling\Ibc05\FindBet.cs" />
+    <Compile Include="Crawling\Ibc05\GetOdd.cs" />
+    <Compile Include="Crawling\Ibc05\PlaceBet.cs" />
+    <Compile Include="Crawling\Ibc05\Report.cs" />
+    <Compile Include="Crawling\Ibet789\Base.cs" />
+    <Compile Include="Crawling\Ibet789\GetBetStatus.cs" />
+    <Compile Include="Crawling\Ibet789\ConfirmBet.cs" />
+    <Compile Include="Crawling\Ibet789\Connect.cs" />
+    <Compile Include="Crawling\Ibet789\FindBet.cs" />
+    <Compile Include="Crawling\Ibet789\GetOdd.cs" />
+    <Compile Include="Crawling\Ibet789\PlaceBet.cs" />
+    <Compile Include="Crawling\Ibet789\Report.cs" />
+    <Compile Include="Crawling\Nba369\Base.cs" />
+    <Compile Include="Crawling\Nba369\GetBetStatus.cs" />
+    <Compile Include="Crawling\Nba369\ConfirmBet.cs" />
+    <Compile Include="Crawling\Nba369\Connect.cs" />
+    <Compile Include="Crawling\Nba369\FindBet.cs" />
+    <Compile Include="Crawling\Nba369\GetOdd.cs" />
+    <Compile Include="Crawling\Nba369\PlaceBet.cs" />
+    <Compile Include="Crawling\Nba369\Report.cs" />
+    <Compile Include="Crawling\Aa2888\CheckBet.cs" />
+    <Compile Include="Crawling\Cambo88BTI\CheckBet.cs" />
+    <Compile Include="Crawling\Cambo88SBO\CheckBet.cs" />
+    <Compile Include="Crawling\Ibc05\CheckBet.cs" />
+    <Compile Include="Crawling\Ibet789\CheckBet.cs" />
+    <Compile Include="Crawling\Nba369\CheckBet.cs" />
+    <Compile Include="Models\NewTable\OpportunityBet.cs" />
+    <Compile Include="Models\BetStatus.cs" />
+    <Compile Include="Crawling\Aa2888\GetBalance.cs" />
+    <Compile Include="Crawling\B855bet\getBalance.cs" />
+    <Compile Include="Crawling\Cambo88BTI\getBalance.cs" />
+    <Compile Include="Crawling\Cambo88UG\GetBalance.cs" />
+    <Compile Include="Crawling\Ibc05\GetBalance.cs" />
+    <Compile Include="Crawling\Nba369\GetBalance.cs" />
+    <Compile Include="Crawling\Cambo88SBO\GetBalance.cs" />
+    <Compile Include="AccountMethods\GetBalance.cs" />
+    <Compile Include="Crawling\Ibet789\GetBalance.cs" />
+    <Compile Include="Crawling\Ph2888\GetBalance.cs" />
+    <Compile Include="Crawling\Va2888\GetBalance.cs" />
+    <Compile Include="Crawling\Va2888AFB\GetBalance.cs" />
+    <Compile Include="Crawling\_Template\GetBalance.cs" />
+    <Compile Include="Strategy\Football\HedgeBet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Custom.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="tessdata\eng.cube.word-freq">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.bigrams">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.size">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.fold">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.params">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.lm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.nn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.tesseract_cube.nn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\NLog.dll" />
+    <Content Include="DLL\Tesseract.dll" />
+    <Content Include="DLL\Tesseract.pdb" />
+    <Content Include="DLL\liblept1753.dll" />
+    <Content Include="DLL\libtesseract3052.dll" />
+    <Content Include="SignalR\jquery-3.4.1.min.js" />
+    <Content Include="SignalR\jquery.signalR-2.4.1.min.js" />
+    <Content Include="SignalR\SignalR_TestPage_Live.html" />
+    <Content Include="SignalR\SignalR_TestPage.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MSBuild.NugetContentRestore.0.1.6\build\net40\MSBuild.NugetContentRestore.targets" Condition="Exists('..\packages\MSBuild.NugetContentRestore.0.1.6\build\net40\MSBuild.NugetContentRestore.targets')" />
+  <PropertyGroup>
+    <!--  <PostBuildEvent>rem copy "$(ProjectDir)DLL\lib*.*" "$(TargetDir)x64\"</PostBuildEvent>-->
+  </PropertyGroup>
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.88.0.4324.9600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.88.0.4324.9600\build\Selenium.WebDriver.ChromeDriver.targets')" />
+</Project>

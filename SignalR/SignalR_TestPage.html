@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>LoggerHub SignalR Testing Page</title>
+
+	<!-- when client is running outside of our server, we must use fqdn path, eg https://data.arbicap.com:16852/Scripts/jquery-3.4.1.min.js -->
+	<!--Reference the jQuery library. -->
+	<script src="https://data.arbicap.com:16852/Scripts/jquery-3.4.1.min.js"></script>
+
+	<!--Reference the SignalR library. -->
+	<script src="jquery.signalR-2.4.1.min.js"></script>
+
+	<!--Reference the dynamically generated SignalR hub proxy script. -->
+	<script src="http://localhost:6969/signalr/hubs"></script>
+
+	<script type="text/javascript">
+		// ------------------------------------------------------------------------------
+		// runs on page load
+		// ------------------------------------------------------------------------------
+		var prv_HubProxy;	// proxy for the hub
+		var prv_Message;	// general purpose variable
+
+		$(function ()
+		{
+			// cf https://docs.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
+			// cf https://cmatskas.com/signalr-cross-domain-with-cors/
+
+			// ----------------------------------------------------------
+			// tell the connection location of the hub
+			// ----------------------------------------------------------
+			$.connection.hub.url = 'http://localhost:6969/signalr';
+
+			// ----------------------------------------------------------
+			// handle connection state changes; disable in production
+			// ----------------------------------------------------------
+			$.connection.hub.stateChanged(HandleStateChange);
+
+			// ----------------------------------------------------------
+			// define what happens on error
+			// ----------------------------------------------------------
+			$.connection.hub.error(function (prm_Error)
+			{
+				prv_Message = 'SignalR error: ' + prm_Error;
+
+				console.log(prv_Message);
+				alert(prv_Message);
+			});
+
+			// ----------------------------------------------------------
+			// declare the proxy to the server [SignalR websocket hub]
+			// ----------------------------------------------------------
+			prv_HubProxy = $.connection.ArbiBetHub;
+
+			// ----------------------------------------------------------
+			// define local functions to handle server-invoked methods
+			// ----------------------------------------------------------
+			prv_HubProxy.client.TestFeedback = function (prm_ServerMessage)
+			{
+				console.log(prm_ServerMessage);
+				alert(prm_ServerMessage);
+			};
+
+			prv_HubProxy.client.onReceivedMessage = function (prm_Object)
+			{
+				prv_Message = JSON.stringify(prm_Object);
+				console.log(prv_Message);
+				alert(prv_Message);
+			};
+
+
+		});
+
+		// -------------------------------------------------------------------
+		// start() the hub, define what happens when connection is established
+		// -------------------------------------------------------------------
+		function OpenWebSocket()
+		{
+			$.connection.hub.start({ transport: ['webSockets', 'longPolling'] }).done(function ()
+			{
+				prv_Message = "Connected, transport = " + $.connection.hub.transport.name;
+				alert(prv_Message);
+				console.log(prv_Message);
+			});
+		}
+
+		function CloseWebSocket()
+		{
+			$.connection.hub.stop();
+		}
+
+		// ----------------------------------------------------------
+		// client-side feedback when socket connection state changes
+		// ----------------------------------------------------------
+		function HandleStateChange(prm_State)
+		{
+			var prv_StateConversion = { 0: 'connecting', 1: 'connected', 2: 'reconnecting', 4: 'disconnected' };
+
+			var prv_Output = 'SignalR state changed from: ' + prv_StateConversion[prm_State.oldState] + ' to: ' + prv_StateConversion[prm_State.newState];
+
+			console.log(prv_Output);
+			alert(prv_Output);
+		}
+
+		function DoClick()
+		{
+			prv_HubProxy.invoke('TestSignalR', '你好 from SignalR webpage client');
+		}
+
+	</script>
+</head>
+<body>
+
+Note: websockets can't be opened from client which is a file opened in a browser. it must be hosted on a webserver. <a href='https://data.arbicap.com:16851/uploads/SignalR_TestPage.html'>like here</a><br /><br />
+
+	<button id="open" onclick="OpenWebSocket();">begin connection</button><br /><br />
+
+	<button id="invoke" onclick="DoClick();">invoke TestSignalR on server</button><br /><br />
+
+	<button id="close" onclick="CloseWebSocket();">end connection</button>
+
+</body>
+</html>
